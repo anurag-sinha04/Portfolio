@@ -416,6 +416,26 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
+    #hamburger {
+        display: block; /* Make it visible */
+        cursor: pointer;
+        z-index: 1100;
+        width: 30px;
+        height: 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #hamburger span {
+        display: block;
+        height: 4px;
+        width: 100%;
+        background-color: var(--color-accent);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
     nav ul {
         display: none;
         position: absolute;
@@ -429,14 +449,21 @@ footer {
         box-shadow: 0 0 20px rgba(0,173,181,0.3);
     }
 
-    nav ul.active {
+    nav ul.show {
         display: flex;
     }
+}
 
-    .menu-toggle {
-        display: block;
-        cursor: pointer;
-    }
+#hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+#hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+#hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
 @media screen and (max-width: 480px) {

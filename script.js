@@ -4,9 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.querySelector('nav ul');
 
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
-    });
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+    hamburger.classList.toggle('active'); // Animate hamburger
+});
+
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
