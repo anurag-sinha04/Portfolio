@@ -1,37 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('nav ul');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e){
             if(this.classList.contains('btn') || this.classList.contains('secondary-btn')) return;
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if(target) target.scrollIntoView({behavior:'smooth'});
+            if(navLinks.classList.contains('show')) navLinks.classList.remove('show'); // Close menu on click
         });
     });
 
+    // Header scroll effect
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
         if(window.scrollY > 80) header.classList.add('scrolled');
         else header.classList.remove('scrolled');
     });
 
+    // Hero typewriter effect
     const heroText = document.getElementById('hero-text');
-    const phrases = ["I Build Intelligent Solutions.","I Love to Code.","I Master AI & ML.","I Ship Full Stack Apps.","I Create Digital Experiences."];
+    const phrases = ["I Build Intelligent Solutions.","I Love to Code.","I Am Mastering AI & ML.","I Ship Full Stack Apps.","I Won A Hackathon"];
     let i=0, j=0, deleting=false;
     function typeEffect(){
         if(!deleting && j<=phrases[i].length){
             heroText.innerHTML = phrases[i].substring(0,j++);
-            setTimeout(typeEffect, 70);
+            setTimeout(typeEffect,70);
         } else if(deleting && j>=0){
             heroText.innerHTML = phrases[i].substring(0,j--);
-            setTimeout(typeEffect, 40);
+            setTimeout(typeEffect,40);
         } else {
             deleting = !deleting;
             if(!deleting) i=(i+1)%phrases.length;
-            setTimeout(typeEffect, 1000);
+            setTimeout(typeEffect,1000);
         }
     }
-    setTimeout(typeEffect, 500);
+    setTimeout(typeEffect,500);
 
+    // ScrollReveal animations
     ScrollReveal().reveal('.hero-text-area > *',{interval:150,origin:'bottom',distance:'40px',duration:1200});
     ScrollReveal().reveal('section h2',{origin:'top',distance:'30px',duration:1000});
     ScrollReveal().reveal('.about-card',{origin:'bottom',distance:'30px',duration:1200});
@@ -42,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ScrollReveal().reveal('#contact .contact-intro',{origin:'top',distance:'20px'});
     ScrollReveal().reveal('.contact-card',{origin:'bottom',distance:'20px',interval:150});
 
+    // Star canvas
     const canvas = document.getElementById('star-canvas');
     const ctx = canvas.getContext('2d');
     let stars=[];
@@ -90,4 +105,5 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeCanvas();
     initStars();
     drawStars();
+
 });

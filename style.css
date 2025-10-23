@@ -311,6 +311,7 @@ h2::after {
     transform: translateY(-8px) scale(1.15) rotate(-3deg);
     color: #00ADB5;
 }
+
 .project-card, .exp-card, .edu-card, .achievement-card {
     background-color: var(--color-card-bg);
     padding: 2rem;
@@ -392,7 +393,7 @@ h2::after {
 .contact-card h3 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
-    color: var(--color-text-light);
+    color: var(--color-accent);
 }
 
 .contact-card p {
@@ -400,39 +401,47 @@ h2::after {
     word-break: break-word;
 }
 
-.contact-card a {
-    color: var(--color-accent);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s, text-shadow 0.3s;
-}
-
-.contact-card a:hover {
-    color: #00ffaa;
-    text-shadow: 0 0 8px #00ffaa;
-}
-
 footer {
-    padding: 1.5rem 2rem;
     text-align: center;
-    background-color: #1A1A1A;
-    border-top: 1px solid rgba(0,173,181,0.3);
-    font-size: 0.9rem;
+    padding: 2rem 0;
+    background-color: var(--color-dark-bg);
+    border-top: 1px solid rgba(0,173,181,0.1);
+    color: var(--color-text-mute);
 }
 
-@media (max-width: 992px) {
-    .skill-item img { width: 70px; height: 70px; }
-    .skill-item span { font-size: 0.95rem; }
+@media screen and (max-width: 1024px) {
+    nav ul { gap: 1.2rem; }
+    .hero-text-area h2 { font-size: 3rem; }
+    .hero-text-area .greeting { font-size: 4rem; }
 }
 
-@media (max-width: 768px) {
-    .skills-grid { gap: 1.5rem; }
-    .skill-item img { width: 60px; height: 60px; }
-    .skill-item span { font-size: 0.9rem; }
+@media screen and (max-width: 768px) {
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 2rem;
+        flex-direction: column;
+        background-color: var(--color-dark-bg);
+        width: 200px;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0,173,181,0.3);
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
 }
 
-@media (max-width: 576px) {
+@media screen and (max-width: 480px) {
+    .hero-text-area h2 { font-size: 2.2rem; }
+    .hero-text-area .greeting { font-size: 3rem; }
+    .hero-actions { flex-direction: column; gap: 1rem; }
     .skills-grid { gap: 1rem; }
-    .skill-item img { width: 50px; height: 50px; }
-    .skill-item span { font-size: 0.85rem; }
 }
