@@ -193,19 +193,21 @@ h2::after {
     color: rgb(119, 224, 115);
     text-shadow: 0 0 15px rgba(126, 251, 130, 0.8);
 }
-
 #hero-text {
     font-size: 4rem;
     font-weight: 900;
     color: var(--color-accent);
     text-shadow: 0 0 10px rgba(0,173,181,0.5);
-    line-height: 1.1;
-    white-space: nowrap;
+    line-height: 1.2;
+    white-space: normal;      /* FIX */
+    word-break: break-word;  /* FIX */
+    text-align: center;      /* FIX */
     overflow: hidden;
-    border-right: 4px solid var(--color-accent);
+    border-right: 3px solid var(--color-accent);
     padding-right: 5px;
     animation: blink-caret 0.75s step-end infinite;
 }
+
 
 .subtitle {
     font-size: 1.25rem;
@@ -415,6 +417,14 @@ footer {
     .hero-text-area .greeting { font-size: 4rem; }
 }
 
+@media screen and (max-width: 480px) {
+    #hero-text {
+        font-size: 1.8rem;
+        border-right: none;   /* Remove cursor line on small screens */
+    }
+}
+
+
 @media screen and (max-width: 768px) {
     #hamburger {
         display: block; /* Make it visible */
@@ -471,4 +481,69 @@ footer {
     .hero-text-area .greeting { font-size: 3rem; }
     .hero-actions { flex-direction: column; gap: 1rem; }
     .skills-grid { gap: 1rem; }
+}
+/* Extra small phones (≤360px) */
+@media (max-width: 360px) {
+  body { font-size: 13px; }
+  h2 { font-size: 1.2rem; }
+  #hero-text { font-size: 1.4rem; }
+  .greeting { font-size: 2rem; }
+  .achievement-card, .project-card, .about-card { padding: 0.9rem; }
+  nav h1 { font-size: 1.1rem; }
+}
+
+/* Small phones (≤480px) */
+@media (max-width: 480px) {
+  section { padding: 3rem 1rem; }
+  #hero-text { font-size: 1.7rem; line-height: 1.3; border-right: none; }
+  .greeting { font-size: 2.3rem; }
+  .skills-grid { gap: 1rem; }
+  .contact-grid { grid-template-columns: 1fr; }
+  nav ul { width: 100%; text-align: center; }
+}
+
+/* Medium phones (≤600px) */
+@media (max-width: 600px) {
+  .project-card, .achievement-card, .exp-card, .edu-card {
+    padding: 1.2rem;
+    border-left-width: 3px;
+  }
+  .btn { padding: 0.6rem 1.4rem; font-size: 0.9rem; }
+}
+
+/* Tablets (≤768px) */
+@media (max-width: 768px) {
+  #hamburger { display: flex; }
+  nav ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-dark-bg);
+    flex-direction: column;
+    padding: 1.2rem;
+  }
+  h2 { font-size: 1.8rem; }
+  .hero-actions { flex-direction: column; }
+}
+
+/* Small laptops (≤1024px) */
+@media (max-width: 1024px) {
+  section { max-width: 900px; }
+  #hero-text { font-size: 2.6rem; }
+  .skills-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Desktops (≥1280px) */
+@media (min-width: 1280px) {
+  section { max-width: 1200px; }
+  #hero-text { font-size: 3.5rem; }
+  .achievement-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Large screens (≥1536px) */
+@media (min-width: 1536px) {
+  section { max-width: 1400px; }
+  #hero-text { font-size: 4rem; }
+  h2 { font-size: 2.8rem; }
 }
